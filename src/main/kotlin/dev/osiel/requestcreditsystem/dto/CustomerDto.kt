@@ -2,7 +2,6 @@ package dev.osiel.requestcreditsystem.dto
 
 import dev.osiel.requestcreditsystem.entity.Address
 import dev.osiel.requestcreditsystem.entity.Customer
-import dev.osiel.requestcreditsystem.service.impl.CustomerService
 import java.math.BigDecimal
 
 data class CustomerDto(
