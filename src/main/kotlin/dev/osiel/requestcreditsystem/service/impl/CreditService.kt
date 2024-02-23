@@ -1,6 +1,7 @@
 package dev.osiel.requestcreditsystem.service.impl
 
 import dev.osiel.requestcreditsystem.entity.Credit
+import dev.osiel.requestcreditsystem.exception.BusinessException
 import dev.osiel.requestcreditsystem.repository.CreditRepository
 import dev.osiel.requestcreditsystem.service.ICreditService
 import org.springframework.stereotype.Service
@@ -22,7 +23,7 @@ class CreditService(
 
     override fun findByCreditCode(customerId: Long, creditCode: UUID): Credit {
         val credit: Credit = (this.creditRepository.findByCreditCode(creditCode)
-            ?: throw RuntimeException("CreditCode $creditCode not found"))
-        return  if (credit.customer?.id == customerId) credit else throw RuntimeException("Contact Admin")
+            ?: throw BusinessException("CreditCode $creditCode not found"))
+        return  if (credit.customer?.id == customerId) credit else throw java.lang.IllegalArgumentException("Contact Admin")
     }
 }
